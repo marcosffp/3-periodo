@@ -61,3 +61,81 @@
 - Escolher métodos de coleta de requisitos (entrevistas, reuniões, questionários, observação).  
 - Criar cenários para facilitar o entendimento.  
 - Evitar requisitos ambíguos e confusos.  
+
+Aqui está um resumo claro e objetivo da matéria, mantendo todos os conceitos essenciais:  
+
+---
+
+## **Tipos de Requisitos**  
+
+### **1. Requisitos Funcionais**  
+São diretamente ligados às funcionalidades do sistema, descrevendo o que ele deve fazer para atender às necessidades do usuário.  
+**Exemplo:** O professor deve cadastrar as avaliações da disciplina.  
+
+### **2. Requisitos Não Funcionais**  
+Relacionam-se ao ambiente tecnológico e às restrições do sistema, como desempenho, segurança e usabilidade.  
+**Exemplos:**  
+- A consulta no sistema de biblioteca não deve demorar mais de 30 segundos.  
+- O sistema deve suportar até 100 usuários simultâneos.  
+
+---
+
+## **Ambiguidade e Clareza nos Requisitos**  
+
+### **Requisitos Imprecisos**  
+São requisitos vagos ou ambíguos que dificultam a implementação e a validação.  
+**Exemplo:** "O sistema deve enviar relatórios mensalmente ou quando requisitado" (não especifica quem requisita, nem como).  
+
+### **Como escrever um requisito claro?**  
+- **Definir o tipo de usuário:** Exemplo: "O engenheiro de teste..."  
+- **Descrever o resultado esperado:** "...simula..."  
+- **Especificar o objeto do requisito:** "...erros de componente..."  
+- **Incluir as condições de operação:** "...utilizando as funções de teste QQ e TT."  
+
+---
+
+## **Erros Comuns em Requisitos**  
+
+1. **Incompletos:** Exemplo: "O sistema deve acompanhar os projetos." (Falta detalhamento sobre como e quais informações).  
+2. **Múltiplos:** Exemplo: "O sistema deve manter dados sobre compras, vendas e estoque, além de registrar comissão de vendedores." (Deveria ser separado em requisitos específicos).  
+
+---
+
+## **Classificação dos Requisitos Não Funcionais**  
+
+### **1. Requisitos de Produto**  
+Definem como o produto deve se comportar.  
+**Exemplo:** [RNF001] Toda consulta por código de barras deve retornar em até 5 segundos.  
+
+### **2. Requisitos Organizacionais**  
+Relacionam-se às políticas e processos internos da empresa.  
+**Exemplo:** [RNF002] Todos os relatórios devem seguir o padrão XYZ-00.  
+
+### **3. Requisitos Externos**  
+Vêm de fatores externos ao sistema, como legislação e integração com outros sistemas.  
+**Exemplo:** [RNF003] A tributação dos produtos deve ser de 15% no Estado do RJ.  
+
+---
+
+## **Como Tornar um Requisito Verificável?**  
+
+Requisitos devem ser escritos de forma que possam ser testados e validados.  
+
+### **Exemplos de Requisitos Inverificáveis e Como Corrigi-los:**  
+
+- **Inverificável:** "O banco de dados deve ser flexível."  
+- **Verificável:** "O banco de dados deve possuir oito campos por registro."  
+
+- **Inverificável:** "O sistema CE deve processar depósitos rapidamente."  
+- **Verificável:** "O sistema CE deve escanear os dados do usuário em até 2 segundos."  
+
+---
+
+## **Palavras Ambíguas e Como Substituí-las**  
+
+| **Termo Ambíguo** | **Solução** |  
+|-------------------|------------|  
+| Amigável | Definir número máximo de passos, lista de funcionalidades específicas |  
+| Portável | Especificar sistemas operacionais compatíveis e requisitos mínimos |  
+| Pequeno | Determinar dimensões ou espaço em bytes |  
+| Flexível | Definir variáveis que podem ser alteradas e funções configuráveis |  
