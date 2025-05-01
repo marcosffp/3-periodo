@@ -1,115 +1,99 @@
-## 📌 **1. O que é Engenharia de Requisitos e Modelagem?**
-A Engenharia de Requisitos é a parte do desenvolvimento de software responsável por definir **o que** o sistema precisa fazer antes mesmo de começar a programação.
-
-🔹 **Modelagem** é a técnica usada para organizar e representar essas informações, ajudando a transformar ideias em um documento claro para desenvolvedores.
-
-🎯 **Exemplo do Mundo Real**: Imagine que você quer construir uma casa. Antes de começar, você precisa ter uma planta que detalhe os cômodos, portas, janelas e materiais. A modelagem na Engenharia de Requisitos funciona como essa planta, mas para um sistema de software.
-
----
-
-## 📌 **2. Por que a Modelagem é Importante?**
-- Evita mal-entendidos entre clientes e desenvolvedores.
-- Ajuda a identificar problemas antes da implementação.
-- Documenta tudo para futuras manutenções.
-
-🎯 **Exemplo**: Se um cliente quer um sistema de pedidos online, mas não especifica que precisa de uma forma de pagamento digital, o software pode ser entregue sem essa função, causando problemas.
+### 🔧 **Engenharia de Requisitos – Etapas**
+O processo de requisitos envolve quatro grandes etapas:
+1. **Elicitação**
+2. **Modelagem**
+3. **Verificação**
+4. **Validação**
 
 ---
 
-## 📌 **3. Tipos de Modelagem e Documentação**
-Existem várias formas de representar requisitos:
+### 🧠 **Modelagem de Requisitos**
+A modelagem serve para **representar, organizar e armazenar os requisitos** identificados na elicitação. Um modelo ajuda a entender o sistema e a se comunicar melhor com todas as partes envolvidas.
 
-### 📌 **Análise Estruturada**
-Foca no **fluxo de informações** dentro do sistema. Usa modelos como:
-- **Diagramas de Fluxo de Dados (DFD)** – Representam como os dados circulam no sistema.
-- **Diagrama de Transição de Estado (DTE)** – Mostra como o sistema muda de estado conforme os eventos ocorrem.
-- **Dicionário de Dados** – Lista e define todos os dados utilizados no sistema.
-
-🎯 **Exemplo:** Imagine um caixa eletrônico. Um DFD pode mostrar como um saque funciona: o cliente insere o cartão → digita a senha → escolhe o valor → o sistema verifica saldo → libera o dinheiro.
+> **Exemplo:** em vez de apenas anotar que o sistema deve “permitir reservas”, podemos criar um **caso de uso "Reservar Livro"** ligado ao ator “Usuário”.
 
 ---
 
-### 📌 **Análise Orientada a Objetos**
-Foca em representar **objetos do sistema**, seus relacionamentos e comportamentos. Usa modelos como:
-- **Modelo de Casos de Uso** – Representa como os usuários interagem com o sistema.
-- **Diagramas de Atividade** – Mostram fluxos de processos dentro do sistema.
-- **Máquinas de Estado** – Representam como um objeto pode mudar seu estado ao longo do tempo.
+### 🧾 **Documentação de Requisitos**
+A documentação transforma o que foi modelado em algo compreensível e reutilizável. Existem várias formas:
 
-🎯 **Exemplo:** No Instagram, um caso de uso pode ser "Postar uma foto". O usuário interage com o sistema carregando uma imagem, aplicando filtros e publicando. Esse processo pode ser representado em um **Diagrama de Caso de Uso**.
+#### 1. **Análise Estruturada**
+Foca no **fluxo de informações** e controle:
+- **Diagramas de Fluxo de Dados (DFDs)**
+- **Diagrama de Transição de Estado (DTE)**
+- **Dicionário de Dados**
 
----
+> **Exemplo:** um DFD pode mostrar o caminho de uma requisição de empréstimo de livro, desde o pedido do usuário até o banco de dados.
 
-### 📌 **Modelagem com Linguagem Natural**
-Forma mais comum e acessível de documentação, pois usa textos descritivos para detalhar requisitos.
+#### 2. **Análise Orientada a Objetos**
+Foca nos **conceitos do domínio** (objetos) e seus comportamentos:
+- **Casos de Uso**
+- **Diagramas de Atividade**
+- **Máquinas de Estado**
 
-✔️ **Vantagens**:
-- Fácil de entender.
-- Não precisa de diagramas complicados.
+> **Exemplo:** no sistema de biblioteca, objetos como “Livro”, “Usuário” e “Reserva” se relacionam com ações específicas.
 
-❌ **Desvantagens**:
-- Pode ser ambígua e gerar mal-entendidos.
+#### 3. **Linguagem Natural**
+Forma mais comum, mas suscetível a ambiguidade.
 
-🎯 **Exemplo:** "O sistema deve permitir que o usuário edite seu perfil" – essa frase pode gerar dúvidas: O que pode ser editado? Nome? Foto? Senha? Por isso, modelos gráficos podem ajudar a esclarecer.
+> Vantagem: todos entendem.  
+> Desvantagem: interpretações dúbias.
 
----
+#### 4. **Modelos Conceituais (como Casos de Uso)**
+- Baseado na interação usuário ↔ sistema
+- Muito usados para **organizar requisitos em unidades lógicas**
+  
+> **Exemplo:** "Reservar Livro" é um caso de uso que ajuda a agrupar funcionalidades relacionadas à reserva.
 
-### 📌 **Modelagem com Manual do Usuário**
-Usar um **manual** como documento de especificação do sistema. Pode conter:
-- **Tutoriais** (passo a passo do sistema).
-- **Referências** (descrição das funções).
-- **Glossário** (dicionário de termos técnicos usados no sistema).
+#### 5. **Manual do Usuário como Especificação**
+Usa tutoriais, glossários e referências funcionais como forma de documentar o sistema.
 
-✔️ **Vantagem**: Útil e compreensível para o cliente.
-❌ **Desvantagem**: Pode ser vaga ou permitir interpretações erradas.
-
-🎯 **Exemplo:** Se um site tem um manual explicando como fazer login, esse documento pode servir para os programadores entenderem como implementar a funcionalidade corretamente.
-
----
-
-## 📌 **4. Diagramas de Casos de Uso**
-Uma das formas mais comuns de modelagem na Engenharia de Requisitos. Representa:
-- **Atores** – Quem interage com o sistema (usuário, outro sistema, máquina).
-- **Casos de Uso** – As funções que o sistema deve realizar.
-- **Relacionamentos** – Conexões entre atores e casos de uso.
-
-🎯 **Exemplo Prático**:
-Imagine um sistema de biblioteca online. Podemos ter:
-- **Ator:** Usuário.
-- **Caso de Uso:** Reservar um livro.
-- **Relacionamento:** O usuário pode solicitar a reserva de um livro.
-
-🔹 Esse diagrama ajuda a garantir que os desenvolvedores e os clientes tenham uma visão clara do que será desenvolvido.
+> **Exemplo:** além de explicar como usar o sistema, o manual define requisitos funcionais (“clique aqui para reservar um livro”).
 
 ---
 
-## 📌 **5. Definição de Atores**
-Os atores representam entidades que interagem com o sistema. Eles podem ser:
-- **Pessoas** (Ex: Cliente, Administrador).
-- **Organizações** (Ex: Banco, Empresa).
-- **Outros sistemas** (Ex: Sistema de Pagamento, API do Google).
-- **Equipamentos** (Ex: Scanner, Sensor de presença).
+### 🌐 **Visão Geral do Sistema (Contexto)**
+Define os **limites do sistema** e quem interage com ele (atores externos). Uma má definição de contexto leva a **requisitos incompletos** ou **erros não detectados**.
 
-🎯 **Exemplo**: Em um aplicativo de entrega como o iFood, há três atores principais:
-- **Cliente** – Faz pedidos.
-- **Entregador** – Recebe solicitações de entrega.
-- **Restaurante** – Prepara os pedidos.
+> **Exemplo visual:** um diagrama onde o sistema está no centro e atores como “Usuário”, “Sistema de Pagamento” e “Biblioteca Externa” estão conectados por linhas de comunicação.
 
 ---
 
-## 📌 **6. Como Identificar Atores?**
-Algumas perguntas que ajudam a definir atores no sistema:
-- Quem irá usar o sistema?
-- O sistema precisa se comunicar com outro sistema?
-- Algum evento acontece automaticamente?
-- Quem precisa ser notificado quando algo acontece?
+### 🎭 **Diagramas de Casos de Uso**
+Esses diagramas mostram:
+- **Atores**: usuários, máquinas, outros sistemas
+- **Casos de Uso**: ações que o sistema realiza
+- **Relacionamentos**: como os atores interagem com o sistema
 
-🎯 **Exemplo**: Em um sistema bancário, os atores podem ser:
-- Cliente – Faz transações.
-- Sistema de Segurança – Detecta acessos suspeitos.
-- Banco Central – Regula as operações.
+> **Exemplo:**  
+> - Ator: *Usuário*  
+> - Caso de Uso: *Reservar Livro*  
+> - Conexão: linha entre o ator e o caso de uso
 
 ---
 
-## 📌 **Conclusão**
-Agora que cobrimos os principais conceitos, conseguimos entender como funciona a modelagem na Engenharia de Requisitos. Cada tipo de modelagem e documentação tem sua função específica e ajuda a garantir que o sistema atenda às necessidades dos usuários.
+### 🧍 **O que é um Ator?**
+- Representa **papéis** (não pessoas específicas).
+- Pode ser uma **pessoa, organização, outro sistema ou equipamento**.
 
+> **Exemplo:** “João” pode ser um **Gerente** e também um **Correntista** – dois papéis (dois atores).
+
+#### 🛠️ **Categorias de Atores**:
+- Pessoas: Ex. Correntista
+- Organizações: Ex. Agência de Impostos
+- Sistemas: Ex. Sistema de Estoque
+- Equipamentos: Ex. Sensor de Presença
+
+---
+
+### 🎯 **Por que Identificar Atores?**
+- Ajuda a **definir o contexto**
+- Mostra **quem interage** com o sistema e **por que**
+- Direciona o levantamento completo dos requisitos
+
+> **Exemplo prático de perguntas para identificar atores:**
+- Quem vai usar o sistema?
+- O sistema precisa informar alguém?
+- Precisa de dados de outro sistema?
+
+---
