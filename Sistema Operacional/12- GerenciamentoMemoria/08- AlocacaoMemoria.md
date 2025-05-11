@@ -71,4 +71,65 @@ Imagine que a memória é um **estacionamento** e cada processo é um **carro**:
 - **Best-Fit**: você procura o **menor espaço que caiba exatamente seu carro** (pode demorar).
 - **Worst-Fit**: você procura a **vaga maior de todas**, mesmo que sobre muito espaço.
 
+## 🎯 O problema:
+
+Imagina que a **memória do computador** é como uma **rua cheia de casas**. Cada **processo** (programa) que roda no computador precisa **moradia** nessa rua.
+
+---
+
+## 🧩 O que é **alocação de memória**?
+
+É o **ato de encontrar uma casa livre** pra colocar o novo morador (processo).
+
+### Exemplo:
+
+* O processo precisa de uma casa com 3 quartos.
+* O sistema vai procurar na rua uma casa desse tamanho.
+* Quando encontra, **aloca** essa casa pro processo.
+
+🔁 **Alocação** = escolher **onde** colocar o processo.
+
+---
+
+## 🔁 O que é **relocação**?
+
+É **como o processo vê sua casa**, e **se ele pode ser mudado de lugar ou não**.
+
+### Existem 2 formas:
+
+### 🧱 1. **Relocação Estática**
+
+* O processo **sabe exatamente em qual casa está**.
+* Se você mudar ele de casa, ele se **perde** (porque decorou os cômodos pela localização).
+* Então **não pode mudar de lugar depois** que entra.
+
+🧠 Imagina um morador que sabe que o banheiro é sempre o segundo cômodo à esquerda. Se mudar ele de casa, ele pode entrar na despensa achando que é o banheiro!
+
+---
+
+### 🚚 2. **Relocação Dinâmica**
+
+* O processo **usa nomes lógicos** pros cômodos ("cozinha", "banheiro").
+* Um mapa (feito pelo sistema) **traduz isso pro endereço real**.
+* Se mudar de casa, **é só atualizar o mapa**, e o processo nem percebe.
+
+🧠 É como usar GPS: você diz "quero ir pra cozinha", e o GPS sempre te leva ao lugar certo — mesmo se a casa mudar de endereço.
+
+---
+
+## ⚖️ Comparando:
+
+| Situação                              | Alocação   | Relocação                        |
+| ------------------------------------- | ---------- | -------------------------------- |
+| 🍽️ Escolher a casa?                  | Sim        | Não                              |
+| 🚪 Mudar de casa depois?              | Não é foco | **Só se for relocação dinâmica** |
+| 🗺️ Entende a casa por cômodos fixos? | —          | Estática: sim / Dinâmica: não    |
+
+---
+
+## 🧠 Final das contas:
+
+* **Alocação** = “em qual casa eu coloco esse novo morador?”
+* **Relocação** = “posso mudar esse morador de casa depois? E como ele entende onde estão os cômodos?”
+
 ---
