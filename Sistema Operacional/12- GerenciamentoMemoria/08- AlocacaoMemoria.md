@@ -71,65 +71,36 @@ Imagine que a memória é um **estacionamento** e cada processo é um **carro**:
 - **Best-Fit**: você procura o **menor espaço que caiba exatamente seu carro** (pode demorar).
 - **Worst-Fit**: você procura a **vaga maior de todas**, mesmo que sobre muito espaço.
 
-## 🎯 O problema:
 
-Imagina que a **memória do computador** é como uma **rua cheia de casas**. Cada **processo** (programa) que roda no computador precisa **moradia** nessa rua.
+## 🧩 **Alocação** = a **primeira vez** que o processo vai pra memória
 
----
-
-## 🧩 O que é **alocação de memória**?
-
-É o **ato de encontrar uma casa livre** pra colocar o novo morador (processo).
-
-### Exemplo:
-
-* O processo precisa de uma casa com 3 quartos.
-* O sistema vai procurar na rua uma casa desse tamanho.
-* Quando encontra, **aloca** essa casa pro processo.
-
-🔁 **Alocação** = escolher **onde** colocar o processo.
+* É quando o processo chega e o sistema precisa **escolher um espaço livre** na memória onde ele **vai caber**.
+* Tipo assim: “onde tem uma casa disponível pro novo morador?”
+* O sistema pode usar estratégias como **First-Fit**, **Best-Fit**, etc., pra escolher esse lugar.
 
 ---
 
-## 🔁 O que é **relocação**?
+## 🔁 **Relocação** = como o processo “enxerga” a memória **depois de já estar alocado**
 
-É **como o processo vê sua casa**, e **se ele pode ser mudado de lugar ou não**.
-
-### Existem 2 formas:
-
-### 🧱 1. **Relocação Estática**
-
-* O processo **sabe exatamente em qual casa está**.
-* Se você mudar ele de casa, ele se **perde** (porque decorou os cômodos pela localização).
-* Então **não pode mudar de lugar depois** que entra.
-
-🧠 Imagina um morador que sabe que o banheiro é sempre o segundo cômodo à esquerda. Se mudar ele de casa, ele pode entrar na despensa achando que é o banheiro!
+* A relocação entra em cena pra **traduzir os endereços** que o processo usa (lógicos) pra endereços reais (físicos).
+* E também pra permitir (ou não) **mover o processo**, por exemplo, depois de um **swap**.
 
 ---
 
-### 🚚 2. **Relocação Dinâmica**
+## 🧠 Exemplo prático:
 
-* O processo **usa nomes lógicos** pros cômodos ("cozinha", "banheiro").
-* Um mapa (feito pelo sistema) **traduz isso pro endereço real**.
-* Se mudar de casa, **é só atualizar o mapa**, e o processo nem percebe.
+1. 👶 **Alocação**: chegou um processo novo → o sistema encontra espaço e coloca ele ali.
+2. 💾 O sistema precisa tirar o processo da memória por falta de espaço → faz **swap** (joga pro disco).
+3. 🔁 Depois, o processo volta à memória:
 
-🧠 É como usar GPS: você diz "quero ir pra cozinha", e o GPS sempre te leva ao lugar certo — mesmo se a casa mudar de endereço.
-
----
-
-## ⚖️ Comparando:
-
-| Situação                              | Alocação   | Relocação                        |
-| ------------------------------------- | ---------- | -------------------------------- |
-| 🍽️ Escolher a casa?                  | Sim        | Não                              |
-| 🚪 Mudar de casa depois?              | Não é foco | **Só se for relocação dinâmica** |
-| 🗺️ Entende a casa por cômodos fixos? | —          | Estática: sim / Dinâmica: não    |
+   * Se for **relocação estática** → ele **tem que voltar pro mesmo lugar**.
+   * Se for **relocação dinâmica** → pode voltar **em outro lugar**, só precisa atualizar os registradores.
 
 ---
 
-## 🧠 Final das contas:
+## 🏠 Analogia com morador:
 
-* **Alocação** = “em qual casa eu coloco esse novo morador?”
-* **Relocação** = “posso mudar esse morador de casa depois? E como ele entende onde estão os cômodos?”
+* **Alocação**: é a primeira vez que o morador ganha uma casa.
+* **Relocação**: é o que acontece **quando ele sai e volta**, ou se o síndico quiser mudar ele de lugar (depende do tipo de contrato).
 
 ---
