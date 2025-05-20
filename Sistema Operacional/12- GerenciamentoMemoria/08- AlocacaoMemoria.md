@@ -71,4 +71,36 @@ Imagine que a memória é um **estacionamento** e cada processo é um **carro**:
 - **Best-Fit**: você procura o **menor espaço que caiba exatamente seu carro** (pode demorar).
 - **Worst-Fit**: você procura a **vaga maior de todas**, mesmo que sobre muito espaço.
 
+
+## 🧩 **Alocação** = a **primeira vez** que o processo vai pra memória
+
+* É quando o processo chega e o sistema precisa **escolher um espaço livre** na memória onde ele **vai caber**.
+* Tipo assim: “onde tem uma casa disponível pro novo morador?”
+* O sistema pode usar estratégias como **First-Fit**, **Best-Fit**, etc., pra escolher esse lugar.
+
+---
+
+## 🔁 **Relocação** = como o processo “enxerga” a memória **depois de já estar alocado**
+
+* A relocação entra em cena pra **traduzir os endereços** que o processo usa (lógicos) pra endereços reais (físicos).
+* E também pra permitir (ou não) **mover o processo**, por exemplo, depois de um **swap**.
+
+---
+
+## 🧠 Exemplo prático:
+
+1. 👶 **Alocação**: chegou um processo novo → o sistema encontra espaço e coloca ele ali.
+2. 💾 O sistema precisa tirar o processo da memória por falta de espaço → faz **swap** (joga pro disco).
+3. 🔁 Depois, o processo volta à memória:
+
+   * Se for **relocação estática** → ele **tem que voltar pro mesmo lugar**.
+   * Se for **relocação dinâmica** → pode voltar **em outro lugar**, só precisa atualizar os registradores.
+
+---
+
+## 🏠 Analogia com morador:
+
+* **Alocação**: é a primeira vez que o morador ganha uma casa.
+* **Relocação**: é o que acontece **quando ele sai e volta**, ou se o síndico quiser mudar ele de lugar (depende do tipo de contrato).
+
 ---
