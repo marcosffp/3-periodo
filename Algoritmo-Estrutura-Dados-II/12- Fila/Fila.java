@@ -123,4 +123,141 @@ public class Fila<E> {
     return fila;
   }
 
+  public void inverter() {
+    Fila<E> f = new Fila<>();
+    Pilha<E> p = new Pilha<>();
+    Celula<E> c = this.frente.getProximo();
+
+    while (c != null) {
+      p.empilhar(c.getItem());
+      c = c.getProximo();
+    }
+
+    c = this.frente.getProximo();
+    while (c != null) {
+      f.enfileirar(p.desempilhar());
+      c = c.getProximo();
+    }
+
+    this.frente = f.frente;
+    this.tras = f.tras;
+  }
+
+  public void removerOcorrencias(E item) {
+    Fila<E> f = new Fila<>();
+    Celula<E> c = this.frente.getProximo();
+
+    while (c != null) {
+      if (c.getItem() != item) {
+        f.enfileirar(c.getItem());
+      }
+      c = c.getProximo();
+    }
+
+    this.frente = f.frente;
+    this.tras = f.tras;
+  }
+  
+  public E obterItemNaPosicao(int posicao) throws Exception {
+    Celula<E> c = this.frente.getProximo();
+    int cont = 0;
+    while (c != null) {
+      if (cont == posicao) {
+        return c.getItem();
+      }
+      cont++;
+      c = c.getProximo();
+    }
+    throw new Exception();
+  }
+
+  public Fila<E> intercalar(Fila<E> outraFila) {
+    Fila<E> f = new Fila<>();
+    Celula<E> c = this.frente.getProximo();
+    Celula<E> c2 = outraFila.frente.getProximo();
+
+    int countC2, countC;
+    countC = countC2 = 0;
+
+    while (c != null) {
+      c = c.getProximo();
+      countC++;
+    }
+
+    while (c2 != null) {
+      c2 = c2.getProximo();
+      countC2++;
+    }
+
+    c = this.frente.getProximo();
+    c2 = outraFila.frente.getProximo();
+    if (countC == countC2) {
+      while (c != null && c2 != null) {
+        f.enfileirar(c.getItem());
+        c = c.getProximo();
+        f.enfileirar(c2.getItem());
+        c2 = c2.getProximo();
+      }
+    } else if (countC < countC2) {
+      while (c2 != null) {
+        if (c != null) {
+          f.enfileirar(c.getItem());
+          c = c.getProximo();
+        }
+        f.enfileirar(c2.getItem());
+        c2 = c2.getProximo();
+      }
+    } else {
+      while (c != null) {
+        f.enfileirar(c.getItem());
+        c = c.getProximo();
+        if (c2 != null) {
+          f.enfileirar(c2.getItem());
+          c2 = c2.getProximo();
+        }
+      }
+    }
+
+    return f;
+  }
+  /*
+   * public Fila<E> intercalar(Fila<E> outraFila) {
+   * Fila<E> f = new Fila<>();
+   * Celula<E> c1 = this.frente.getProximo();
+   * Celula<E> c2 = outraFila.frente.getProximo();
+   * 
+   * while (c1 != null || c2 != null) {
+   * if (c1 != null) {
+   * f.enfileirar(c1.getItem());
+   * c1 = c1.getProximo();
+   * }
+   * if (c2 != null) {
+   * f.enfileirar(c2.getItem());
+   * c2 = c2.getProximo();
+   * }
+   * }
+   * 
+   * return f;
+   * }
+   * 
+   */
+
+  public boolean comparar(Fila<E> outraFila) {
+    Celula<E> c = this.frente.getProximo();
+    Celula<E> c2 = outraFila.frente.getProximo();
+
+    while (c != null && c2 != null) {
+      if (c.getItem() != c2.getItem()) {
+        return false;
+      }
+      c = c.getProximo();
+      c2 = c2.getProximo();
+    }
+
+    if (c != null || c2 != null) {
+      return false;
+    }
+
+    return true;
+  }
 }
