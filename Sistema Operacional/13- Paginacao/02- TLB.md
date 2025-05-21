@@ -104,6 +104,82 @@ Isso quer dizer:
 
 E o **PCB** precisa guardar a **tabela de páginas** (e talvez a TLB), para que o processo volte corretamente quando for retomado.
 
+## 🧭 **FLUXO DETALHADO DO FUNCIONAMENTO DO TLB**
+
+### 1. **CPU gera um endereço virtual**
+
+* A CPU emite um **endereço virtual**, que é dividido em duas partes:
+
+  * **p**: número da página (page number).
+  * **d**: deslocamento (offset) dentro da página.
+
 ---
 
-Se quiser, posso mostrar um **fluxo completo de troca de contexto** com paginação envolvida. Deseja?
+### 2. **Verificação na TLB (Translation Lookaside Buffer)**
+
+* A parte **p** (número da página) é usada para consultar a TLB.
+* A TLB é uma memória cache pequena e rápida, que guarda traduções recentes de páginas virtuais para quadros físicos.
+
+#### 2.1. ✅ **TLB Hit (acerto na TLB)**
+
+* Se a página **p** está na TLB e é válida (indicador **v** = válido):
+
+  * A TLB retorna o **número do quadro físico (f)** correspondente.
+  * O endereço físico é montado como: **\[f | d]**.
+  * A memória física é então acessada diretamente usando esse endereço físico.
+
+#### 2.2. ❌ **TLB Miss (falha na TLB)**
+
+* Se a página **p** **não** está na TLB:
+
+  * O sistema acessa a **tabela de páginas (na memória)** para procurar o quadro físico correspondente a essa página.
+
+---
+
+### 3. **Consulta à Tabela de Páginas (Page Table)**
+
+* A **tabela de páginas** (armazenada na memória principal) é consultada com o número da página **p**.
+* Essa tabela retorna o número do **quadro físico (f)** correspondente à página **p**.
+
+---
+
+### 4. **Atualização da TLB**
+
+* Após obter o número do quadro físico da tabela de páginas, a entrada **(p, f)** é **carregada na TLB** (caso haja espaço ou substituindo uma entrada existente).
+* Isso é indicado no diagrama como **"load TLB"**.
+
+---
+
+### 5. **Montagem do Endereço Físico**
+
+* Com o número do quadro físico **f** obtido (por TLB ou tabela de páginas), monta-se o endereço físico completo:
+
+  * **Endereço físico = \[f | d]**
+
+---
+
+### 6. **Acesso à Memória**
+
+* Finalmente, o sistema acessa a **memória física** no endereço **\[f | d]**, realizando a leitura ou escrita solicitada pela CPU.
+
+---
+
+## 📌 **Resumo Visual do Fluxo**
+
+```text
+CPU → endereço virtual (p + d)
+     ↓
+   TLB ────────────────┐
+    │                 │
+  Hit               Miss
+    │                 ↓
+ endereço físico   tabela de páginas (memória)
+    ↓                 ↓
+ memória           carrega (p, f) na TLB
+    ↓
+ resposta para CPU
+```
+
+---
+
+
