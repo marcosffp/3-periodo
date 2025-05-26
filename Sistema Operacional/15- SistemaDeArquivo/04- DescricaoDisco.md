@@ -1,7 +1,3 @@
-Claro! Vamos destrinchar essa parte do conteúdo de forma simples, direta e com analogias, pra você realmente entender "essa porra" de como **discos e sistemas de arquivos** funcionam:
-
----
-
 ## 🔄 COMO FUNCIONAM OS DISCOS
 
 ### 📀 A estrutura física:
