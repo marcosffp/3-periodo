@@ -105,5 +105,12 @@ Essa troca é **crítica para segurança e consistência**, pois garante que o p
   * Isso **economiza memória** e é mais eficiente.
 * Exemplo: sistemas de 64 bits geralmente usam **4 níveis de paginação**.
 
----
+### 🧾 **Compartilhamento com Paginação**
+
+* **Paginação** permite que **vários processos compartilhem páginas de memória**, mesmo que estejam em locais diferentes no espaço de endereçamento virtual.
+* Para isso, o código compartilhado precisa ser **reentrante**, ou seja, **não pode ser modificado** (sem escrita/leitura de dados no código).
+* O **SO rastreia** esse código e **reutiliza** páginas já carregadas na memória quando outro processo precisa executar o mesmo programa (ex.: `emacs`).
+* Isso reduz o **uso de memória**, principalmente para **programas usados com frequência**.
+* Mesmo com vantagens como **eliminação da fragmentação externa** e **execução parcial na memória**, a paginação tem **custos**: requer **tradução de endereços mais lenta**, **hardware com TLB** e um **SO mais complexo** para gerenciar as tabelas de páginas.
+
 

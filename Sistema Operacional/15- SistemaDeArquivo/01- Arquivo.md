@@ -1,14 +1,37 @@
+## 🗂️ O que é um **diretório**?
+
+* Um diretório (também chamado de **pasta**) **serve para organizar arquivos e outros diretórios**.
+* Ele **contém outros arquivos** ou diretórios dentro dele, mas **não guarda dados diretamente**, como texto ou imagens.
+
+📁 Exemplo:
+Uma pasta chamada `Documentos` pode conter:
+
+* Um arquivo `curriculo.pdf`
+* Um arquivo `projeto.docx`
+* Outra pasta chamada `Trabalhos`
+
+---
 ## 📦 O que é um Arquivo?
 
 **Explicação simples:**
 Um **arquivo** é como uma **caixa** onde você guarda informações no computador. Pode conter **dados** (como textos, fotos, planilhas) ou **programas** (códigos e executáveis).
+* Ele **não contém outros arquivos ou diretórios dentro dele**.
 
-**Exemplos:**
+📄 Exemplo:
 
+* `carta.txt`: contém um texto.
+* `foto.jpg`: contém uma imagem.
+* `musica.mp3`: contém um áudio.
 * `reader.cc`: código-fonte de um programa.
 * `a.out`: programa já compilado (executável).
+---
+
+## 🧠 Resumo com frase correta:
+
+> "Nem todo arquivo é um diretório, mas todo diretório é um tipo especial de arquivo."
 
 ---
+
 
 ## 🧱 Arquivo Estruturado vs. Não Estruturado
 
