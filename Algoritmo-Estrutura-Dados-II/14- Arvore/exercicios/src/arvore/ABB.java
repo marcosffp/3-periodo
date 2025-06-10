@@ -28,7 +28,7 @@ public class ABB<K, V> implements IMapeamento<K, V> {
     return tamanho;
   }
 
-  private No<K, V> inserir(K chave, V item, No<K, V> raizArvore) {
+  protected No<K, V> inserir(K chave, V item, No<K, V> raizArvore) {
     if (raizArvore == null) {
       raizArvore = new No<>(chave, item);
     } else {
@@ -72,7 +72,7 @@ public class ABB<K, V> implements IMapeamento<K, V> {
     return removido;
   }
 
-  private No<K, V> remover(K chave, No<K, V> raizArvore) {
+  protected No<K, V> remover(K chave, No<K, V> raizArvore) {
     if (raizArvore == null) {
       throw new NoSuchElementException("Sem elementos");
     } else {

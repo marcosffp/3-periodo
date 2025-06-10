@@ -6,11 +6,29 @@ public class No<K,V> {
   private V item;
   private No<K, V> direita;
   private No<K, V> esquerda;
+  private int altura;
 
   public No(K chave, V item) {
     this.chave = chave;
     this.item = item;
     direita = esquerda = null;
+    altura = 0;
+  }
+
+  public int getAltura(No<K, V> no) {
+    if (no!=null) {
+      return no.getAltura();
+    } else {
+      return -1;
+    }
+  }
+
+  public int getAltura() {
+    return altura;
+  }
+
+  public void setAltura(int altura) {
+    this.altura = altura;
   }
 
   public K getChave() {
@@ -45,6 +63,19 @@ public class No<K,V> {
     this.esquerda = esquerda;
   }
 
+  public void setAltura() {
+    int alturaEsquerda = getAltura(esquerda);
+    int alturaDireita = getAltura(direita);
+    altura = Math.max(alturaEsquerda, alturaDireita) + 1;
+  }
+
+  public int getFatorBalanceamento() {
+    int alturaEsquerda = getAltura(esquerda);
+    int alturaDireita = getAltura(direita);
+
+    return alturaEsquerda - alturaDireita;
+  }
+
   /*
    * Implemente a função public ABB<K, V> clone(), capaz de criar e retornar uma
    * cópia exata da árvore binária de busca. A árvore binária de busca original e
@@ -62,7 +93,7 @@ public class No<K,V> {
     return clone(this);
   }
 
-  private No<K, V> clone(No<K,V> no) {
+  private No<K, V> clone(No<K, V> no) {
     No<K, V> novoNo = new No<>(no.getChave(), no.getItem());
     if (no.getEsquerda() != null) {
       novoNo.setEsquerda(clone(no.getEsquerda()));
@@ -72,5 +103,7 @@ public class No<K,V> {
     }
     return novoNo;
   }
+  
+  
 
 }
