@@ -653,7 +653,6 @@ public class ABB<K, V> implements IMapeamento<K, V> {
 
     System.out.println("\n== NÚMEROS DE ELEMENTOS CUMPRIR A CONDIÇÃO");
     System.out.println("Números de elementos pares na árvore: " + abb.contarSe(v -> v % 2 == 0));
-
   }
 
 }

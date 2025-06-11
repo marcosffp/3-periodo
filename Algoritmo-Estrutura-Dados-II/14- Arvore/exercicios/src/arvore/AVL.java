@@ -29,12 +29,15 @@ public class AVL<K, V> extends ABB<K, V> {
         }
         raizArvore = rotacionarEsquerda(raizArvore);
       }
-      if (fatorBalanceamentoRaiz == 2) {
+      else if (fatorBalanceamentoRaiz == 2) {
         fatorBalanceamentoFilho = raizArvore.getEsquerda().getFatorBalanceamento();
         if (fatorBalanceamentoFilho == -1) {
           raizArvore.setEsquerda(rotacionarEsquerda(raizArvore.getEsquerda()));
         }
         raizArvore = rotacionarDireita(raizArvore);
+      }
+      else {
+        raizArvore.setAltura();
       }
 
     }
