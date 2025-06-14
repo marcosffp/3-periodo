@@ -52,7 +52,7 @@ Um **arquivo** é como uma **caixa** onde você guarda informações no computad
 São como as **etiquetas** coladas na caixa:
 
 * Nome
-* Tipo
+* Tipo: define o formato e como os são organizados dentro do arquivo.
 * Tamanho
 * Localização no disco
 * Proteção (quem pode ler, escrever, etc.)
