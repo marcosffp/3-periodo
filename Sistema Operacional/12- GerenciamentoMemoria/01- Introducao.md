@@ -83,3 +83,9 @@ Se usássemos apenas endereços físicos:
 É o processo de **converter um endereço virtual (usado pelo programa)** em um **endereço físico (real na memória RAM)**.
 
 ---
+
+### ✅ Segmentação
+
+Segmentação é uma técnica de gerenciamento de memória que divide o espaço de um processo em partes lógicas chamadas segmentos, permitindo proteção e alocação de tamanhos variados para código, dados e pilha.
+
+---
