@@ -36,38 +36,44 @@ Vamos usar o vetor `[7, 4, 5, 2]` como exemplo, com **iterações numeradas** pa
 
 ### 📐 Etapas do Insertion Sort com Numeração das Passagens
 
-#### 🟢 **Passagem 1:**
-- Vetor atual: `[7, 4, 5, 2]`
-- Elemento analisado: `4`
-  - 4 < 7 → desloca 7
-  - Insere 4 na posição 0  
-- ✅ Resultado: `[4, 7, 5, 2]`
+#### 🔹 Passagem 1 (`i = 0`):
 
-#### 🟢 **Passagem 2:**
-- Vetor atual: `[4, 7, 5, 2]`
-- Elemento analisado: `5`
-  - 5 < 7 → desloca 7
-  - 5 > 4 → insere depois de 4  
-- ✅ Resultado: `[4, 5, 7, 2]`
-
-#### 🟢 **Passagem 3:**
-- Vetor atual: `[4, 5, 7, 2]`
-- Elemento analisado: `2`
-  - 2 < 7 → desloca 7  
-  - 2 < 5 → desloca 5  
-  - 2 < 4 → desloca 4  
-  - Insere 2 na posição 0  
-- ✅ Resultado final: `[2, 4, 5, 7]`
+* `menor = 0` (`7`)
+* `j = 1`: compara `7` com `4` → `menor = 1`
+* `j = 2`: compara `4` com `5` → nada muda
+* `j = 3`: compara `4` com `2` → `menor = 3`
+* **Troca `7` com `2`**
+  ✅ Vetor após: `[2, 4, 5, 7]`
 
 ---
 
-### 🧠 Resumo por Passagem:
+#### 🔹 Passagem 2 (`i = 1`):
 
-| Passagem | Elemento analisado | Ação                                     | Resultado            |
-|----------|--------------------|------------------------------------------|----------------------|
-| 1        | `4`                | Desloca `7`, insere `4`                  | `[4, 7, 5, 2]`       |
-| 2        | `5`                | Desloca `7`, insere `5` após `4`         | `[4, 5, 7, 2]`       |
-| 3        | `2`                | Desloca `7`, `5`, `4`, insere `2`        | `[2, 4, 5, 7]`       |
+* `menor = 1` (`4`)
+* `j = 2`: compara `4` com `5` → nada muda
+* `j = 3`: compara `4` com `7` → nada muda
+* **Nenhuma troca**
+  ✅ Vetor permanece: `[2, 4, 5, 7]`
+
+---
+
+#### 🔹 Passagem 3 (`i = 2`):
+
+* `menor = 2` (`5`)
+* `j = 3`: compara `5` com `7` → nada muda
+* **Nenhuma troca**
+  ✅ Vetor permanece: `[2, 4, 5, 7]`
+
+---
+
+### 🧠 Resumo correto com base no **Selection Sort**:
+
+| Passagem | Elemento fixo (posição i) | Menor encontrado | Troca?      | Resultado      |
+| -------- | ------------------------- | ---------------- | ----------- | -------------- |
+| 1        | 7 (pos 0)                 | 2 (pos 3)        | Sim (0 ↔ 3) | `[2, 4, 5, 7]` |
+| 2        | 4 (pos 1)                 | 4                | Não         | `[2, 4, 5, 7]` |
+| 3        | 5 (pos 2)                 | 5                | Não         | `[2, 4, 5, 7]` |
+
 
 ---
 

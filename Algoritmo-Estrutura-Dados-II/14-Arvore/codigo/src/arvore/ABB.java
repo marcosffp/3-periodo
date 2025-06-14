@@ -168,7 +168,7 @@ public class ABB<K, V> implements IMapeamento<K, V> {
       return caminho;
     }
   }
-  
+
   /*
    * QUESTÃO EXTRA: Implemente o método public String caminhamentoEmNivel()
    * que percorre a árvore binária de busca em nível, retornando uma string com os
@@ -200,7 +200,7 @@ public class ABB<K, V> implements IMapeamento<K, V> {
       }
     }
     return caminho;
-    
+
   }
 
   /*

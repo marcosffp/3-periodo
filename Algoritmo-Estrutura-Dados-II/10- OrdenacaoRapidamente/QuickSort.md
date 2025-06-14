@@ -31,7 +31,7 @@
 ## 🧮 Exemplo com vetor
 
 Vamos usar o vetor:  
-`[33, 15, 10, 99, 27, 48, 12, 2, 50]`
+`[33, 15, 10, 99, 12, 2, 50]`
 
 ---
 
@@ -40,80 +40,93 @@ Vamos usar o vetor:
 ### 🔹 **Etapa 1 – Divisão e Recursão**
 
 #### 🟠 **Passagem 1:**
-- Vetor: `[33, 15, 10, 99, 27, 48, 12, 2, 50]`
-- **Pivô escolhido:** 33  
+- Vetor: `[50, 15, 10, 99, 12, 2, 33]`
+- **Pivô escolhido:** 33 
 - Particiona:
-  - Menores que 33: `[15, 10, 27, 12, 2]`
+  - Menores que 33: `[15 ,10 ,12 ,2]`
   - Pivô: `[33]`
-  - Maiores que 33: `[99, 48, 50]`
+  - Maiores que 33: `[50, 99]`
+  - Inserir o Pivô na posição certa:[15,10,12,2,] 33 [,99,50]
 
 ---
 
-#### 🟠 **Passagem 2 (Subvetor menor: `[15, 10, 27, 12, 2]`)**
-- **Pivô:** 15  
-- Menores: `[10, 12, 2]`  
-- Pivô: `[15]`  
-- Maiores: `[27]`
+#### 🟠 **Passagem 2**
+- Vetor: `[15 , 10, 12, 2]`
+- **Pivô escolhido:** 2 
+- Particiona:  
+  - Menores que 2: `[]`  
+  - Pivô: `[2]`  
+  - Maiores que 2: `[15, 10, 12]`
+  - Inserir o Pivô na posição certa:[] 2 [,10,12,15]
 
 ---
 
-#### 🟠 **Passagem 3 (Subvetor `[10, 12, 2]`)**
-- **Pivô:** 10  
-- Menores: `[2]`  
-- Pivô: `[10]`  
-- Maiores: `[12]`
+#### 🟠 **Passagem 3**
+- Vetor: `[10, 12, 15]`
+- **Pivô escolhido:** 15   
+- Particiona:
+  - Menores que 15: `[10, 12]`  
+  - Pivô: `[15]`  
+  - Maiores que 15: `[]`
+  - Inserir o Pivô na posição certa:[10,12,] 15 []
+
+---
+
+#### 🟠 **Passagem 4**
+- Vetor: `[10, 12]`
+- **Pivô escolhido:** 12   
+- Particiona:
+  - Menores que 12: `[10]`  
+  - Pivô: `[12]`  
+  - Maiores que 12: `[]`
+  - Inserir o Pivô na posição certa:[10] 12 []
 
 ---
 
 #### 🔹 **Casos-base (não são contados como passagens):**
-- `[2]`, `[12]`, `[27]` → já estão ordenados (1 elemento)
+- `[10]`→ já está ordenado (1 elemento)
 
 ---
 
-#### 🟠 **Passagem 4 (Subvetor maior: `[99, 48, 50]`)**
-- **Pivô:** 99  
-- Menores: `[48, 50]`  
-- Pivô: `[99]`  
-- Maiores: `[]`
-
----
-
-#### 🟠 **Passagem 5 (Subvetor `[48, 50]`)**
-- **Pivô:** 48  
-- Menores: `[]`  
-- Pivô: `[48]`  
-- Maiores: `[50]`
+#### 🟠 **Passagem 5:**
+- Vetor: `[99, 50]`
+- **Pivô escolhido:** 50 
+- Particiona:
+  - Menores que 50: `[]`
+  - Pivô: `[50]`
+  - Maiores que 50: `[99]`
+  - Inserir o Pivô na posição certa:[] 50 [99]
 
 ---
 
 #### 🔹 **Caso-base (não é contado como passagem):**
-- `[50]` → já está ordenado
+- `[99]` → já está ordenado
 
 ---
 
 ### 🔹 **Etapa 2 – Combinação dos Resultados (de volta da recursão)**
 
-1. `[2] + [10] + [12]` → `[2, 10, 12]`  
-2. `[2, 10, 12] + [15] + [27]` → `[2, 10, 12, 15, 27]`  
-3. `[48] + [50]` → `[48, 50]`  
-4. `[48, 50] + [99]` → `[48, 50, 99]`  
-5. Final: `[2, 10, 12, 15, 27] + [33] + [48, 50, 99]` → ✅ **Resultado final: `[2, 10, 12, 15, 27, 33, 48, 50, 99]`**
+1. `[50] + [99]` → `[50, 99]`  
+2. `[10] + [12]` → `[10, 12]`
+3. `[10, 12] + [15]` → `[10, 12, 15]`   
+4. Final: `[10, 12, 15] + [33] + [50, 99]` → ✅ **Resultado final: `[10, 12, 15, 33, 50, 99]`**
 
 ---
 
 ### 🧠 Resumo por Passagem:
 
-| Passagem | Pivô | Vetor Atual                         | Partes (Menores | Pivô | Maiores)        |
-|----------|------|--------------------------------------|------------------|------|------------------|
-| 1        | 33   | `[33, 15, 10, 99, 27, 48, 12, 2, 50]` | `[15, 10, 27, 12, 2]` | `[33]` | `[99, 48, 50]` |
-| 2        | 15   | `[15, 10, 27, 12, 2]`                | `[10, 12, 2]` | `[15]` | `[27]`      |
-| 3        | 10   | `[10, 12, 2]`                        | `[2]` | `[10]` | `[12]`          |
-| —        | —    | `[2]`, `[12]`, `[27]`                | (casos-base)           |
-| 4        | 99   | `[99, 48, 50]`                       | `[48, 50]` | `[99]` | `[]`         |
-| 5        | 48   | `[48, 50]`                           | `[]` | `[48]` | `[50]`         |
-| —        | —    | `[50]`                               | (caso-base)            |
+| Passagem | Pivô | Vetor Atual                   | Menores que o Pivô | Pivô   | Maiores que o Pivô |
+| -------- | ---- | ----------------------------- | ------------------ | ------ | ------------------ |
+| 1        | 33   | `[50, 15, 10, 99, 12, 2, 33]` | `[15, 10, 12, 2]`  | `[33]` | `[50, 99]`         |
+| 2        | 2    | `[15, 10, 12, 2]`             | `[]`               | `[2]`  | `[15, 10, 12]`     |
+| 3        | 15   | `[15, 10, 12]`                | `[10, 12]`         | `[15]` | `[]`               |
+| 4        | 12   | `[10, 12]`                    | `[10]`             | `[12]` | `[]`               |
+| —        | —    | `[10]`                        | (casos-base)       |        |                    |
+| 5        | 50   | `[99, 50]`                    | `[]`               | `[50]` | `[99]`             |
+| —        | —    | `[99]`                        | (casos-base)       |        |                    |
 
 ---
+
 
 
 ## 🧑‍💻 Código Java Explicado
@@ -204,25 +217,6 @@ Durante o particionamento:
 
 - Cada `comparador.compare(...)` é uma **comparação**.
 - Cada chamada de `swap(...)` representa uma **movimentação**.
-
----
-
-## 📌 Resumo Visual do Fluxo:
-
-```
-Vetor inicial: [8, 4, 7, 3, 10, 2, 6, 5, 1, 9]
-
-1. Escolhe pivô (ex: 9)
-   Particiona em:
-   [8, 4, 7, 3, 2, 6, 5, 1] 9 [10]
-
-2. Repete nas subpartes:
-   [1, 4, 7, 3, 2, 6, 5, 8]
-   [10]
-
-3. Continua até ordenar tudo:
-   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-```
 
 ---
 

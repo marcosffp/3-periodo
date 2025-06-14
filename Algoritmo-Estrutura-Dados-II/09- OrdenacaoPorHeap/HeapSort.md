@@ -36,68 +36,89 @@ Vamos usar o vetor `[4, 10, 3, 5, 1]`.
 
 ### 🔹 **Etapa 1 – Construção do Heap Máximo**
 
-#### 🟠 **Passagem 1:**
-- Vetor inicial: `[4, 10, 3, 5, 1]`
-- Começa do último nó pai: índice 1 (valor 10)
+#### 🟠 **Parte 1:**
+- Vetor inicial: `[X, 4, 10, 3, 5, 1]`
+- Começa do último nó pai: índice i/2= (valor 10)
   - Nada a fazer (10 > filhos)
 
-#### 🟠 **Passagem 2:**
-- Índice 0 (valor 4)
+#### 🟠 **Parte 2:**
+- Índice 1 (valor 4)
   - Filhos: 10 (esq) e 3 (dir)
   - Maior filho: 10 → troca com 4  
-  🔄 Vetor: `[10, 4, 3, 5, 1]`
+  🔄 Vetor: `[X, 10, 4, 3, 5, 1]`
+  - teve troca, chama o restaura para o índice 2
 
-#### 🟠 **Passagem 3:**
-- Índice 1 (valor 4), após troca
+#### 🟠 **Parte 3:**
+- Índice 2 (valor 4), após troca
   - Filhos: 5 (esq) e 1 (dir)
   - Maior filho: 5 → troca com 4  
-  🔄 Vetor: `[10, 5, 3, 4, 1]`
+  🔄 Vetor: `[X, 10, 5, 3, 4, 1]`
+  - teve troca, chama o restaura para o índice 4
 
-✅ **Heap máximo construído:** `[10, 5, 3, 4, 1]`
+#### 🟠 **Parte 4:**
+- Índice 4 (valor 4), após troca
+  - Filhos: NULL (esq) e NULL (dir)
+  - Não teve troca
+
+
+✅ **Heap máximo construído:** `[X, 10, 5, 3, 4, 1]`
 
 ---
 
 ### 🔹 **Etapa 2 – Ordenação com Trocas e Reajustes**
 
-#### 🟢 **Passagem 4:**
+#### 🟢 **Passagem 1:**
 - Troca raiz (10) com último (1)  
-  🔄 Vetor: `[1, 5, 3, 4, 10]`
+  🔄 Vetor: `[X, 1, 5, 3, 4, 10]`
 - Reajusta heap (tamanho 4):
-  - Índice 0: 1 → filhos 5 e 3 → troca com 5
-  - Índice 1: 1 → filhos 4 → troca com 4  
-  🔄 Vetor: `[5, 4, 3, 1, 10]`
+  - Índice 1: 1 → filhos 5 e 3 → troca com 5
+  🔄 Vetor: `[X, 5, 1, 3, 4, 10]`
+    - teve troca, chama o restaura para o índice 2
+    - Índice 2: 1 → filho 4 → troca com 4  
+  🔄 Vetor: `[X, 5, 4, 3, 1, 10]`
+      - teve troca, chama o restaura para o índice 4
+      - Índice 4: 1 → sem filho, não teve troca 
 
-#### 🟢 **Passagem 5:**
-- Troca raiz (5) com último da parte não ordenada (1)  
-  🔄 Vetor: `[1, 4, 3, 5, 10]`
+#### 🟢 **Passagem 2:**
+- Troca raiz (5) com último (1)
+  🔄 Vetor: `[X, 1, 4, 3, 5, 10]`
 - Reajusta heap (tamanho 3):
-  - Índice 0: 1 → filhos 4 e 3 → troca com 4  
-  🔄 Vetor: `[4, 1, 3, 5, 10]`
+  - Índice 1: 1 → filhos 4 e 3 → troca com 4
+  🔄 Vetor: `[X, 4, 1, 3, 5, 10]`
+    - teve troca, chama o restaura para o índice 2
+    - Índice 2: 1 → sem filho, não teve troca 
 
-#### 🟢 **Passagem 6:**
-- Troca raiz (4) com índice 2 (valor 3)  
-  🔄 Vetor: `[3, 1, 4, 5, 10]`
+#### 🟢 **Passagem 3:**
+- Troca raiz (4) com último (3)
+  🔄 Vetor: `[X, 3, 1, 4, 5, 10]`
 - Reajusta heap (tamanho 2):
-  - Índice 0: 3 → filho 1 → nada a fazer  
+  - Índice 1: 3 → filho 1 → sem troca
+  🔄 Vetor: `[X, 3, 1, 4, 5, 10]`
 
-#### 🟢 **Passagem 7:**
-- Troca raiz (3) com índice 1  
-  🔄 Vetor: `[1, 3, 4, 5, 10]`
+#### 🟢 **Passagem 4:**
+- Troca raiz (3) com último (1)
+  🔄 Vetor: `[X, 1, 3, 4, 5, 10]`
+- Reajusta heap (tamanho 1):
 - Heap com 1 elemento → finalizado ✅
 
 ---
 
+#### 🟠 **Parte 5:**
+- Alterar o vetor para voltar à posição zero
+[1, 3, 4, 5, 10]
+
 ### 🧠 Resumo por Passagem:
 
-| Passagem | Operação              | Vetores Envolvidos             | Resultado               |
-|----------|------------------------|---------------------------------|-------------------------|
-| 1        | Verifica nó 1 (10)     | `[4, 10, 3, 5, 1]`              | Nenhuma troca           |
-| 2        | Ajuste no nó 0         | `[4, 10, 3, 5, 1]`              | `[10, 4, 3, 5, 1]`       |
-| 3        | Ajuste no nó 1         | `[10, 4, 3, 5, 1]`              | `[10, 5, 3, 4, 1]`       |
-| 4        | Troca e reajuste       | `[10, 5, 3, 4, 1]`              | `[5, 4, 3, 1, 10]`       |
-| 5        | Troca e reajuste       | `[5, 4, 3, 1, 10]`              | `[4, 1, 3, 5, 10]`       |
-| 6        | Troca e reajuste       | `[4, 1, 3, 5, 10]`              | `[3, 1, 4, 5, 10]`       |
-| 7        | Troca final            | `[3, 1, 4, 5, 10]`              | `[1, 3, 4, 5, 10]`       |
+| Passagem | Operação                         | Vetores Envolvidos    | Resultado             |
+| -------- | -------------------------------- | --------------------- | --------------------- |
+| 1        | Verifica nó 3 (valor 10)         | `[X, 4, 10, 3, 5, 1]` | Nenhuma troca         |
+| 2        | Ajuste no nó 1 (troca com 10)    | `[X, 4, 10, 3, 5, 1]` | `[X, 10, 4, 3, 5, 1]` |
+| 3        | Ajuste no nó 2 (troca com 5)     | `[X, 10, 4, 3, 5, 1]` | `[X, 10, 5, 3, 4, 1]` |
+| 4        | Troca 10↔1, reajustes (5↔1, 4↔1) | `[X, 10, 5, 3, 4, 1]` | `[X, 5, 4, 3, 1, 10]` |
+| 5        | Troca 5↔1, reajuste (4↔1)        | `[X, 5, 4, 3, 1, 10]` | `[X, 4, 1, 3, 5, 10]` |
+| 6        | Troca 4↔3, sem reajuste          | `[X, 4, 1, 3, 5, 10]` | `[X, 3, 1, 4, 5, 10]` |
+| 7        | Troca 3↔1, fim                   | `[X, 3, 1, 4, 5, 10]` | `[X, 1, 3, 4, 5, 10]` |
+
 
 ---
 
