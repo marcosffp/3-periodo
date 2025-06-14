@@ -77,3 +77,9 @@ Se usássemos apenas endereços físicos:
 - **Endereço virtual** = número do apartamento. O porteiro (SO) sabe onde fica realmente.
 
 ---
+
+### ✅ O que é **tradução de endereços**?
+
+É o processo de **converter um endereço virtual (usado pelo programa)** em um **endereço físico (real na memória RAM)**.
+
+---
