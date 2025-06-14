@@ -115,6 +115,8 @@
 * Três tipos: **read (r), write (w), execute (x)**.
 * Representação binária: `rwxr-x---` → `111101000`
 
+O sistema operacional usa permissões de acesso (como no Unix: owner, group, others) com três tipos: leitura (r), escrita (w) e execução (x), controlando o que cada usuário pode fazer com arquivos compartilhados.
+
 ---
 
 ## ✅ CONCLUSÃO (Resumo Final)
