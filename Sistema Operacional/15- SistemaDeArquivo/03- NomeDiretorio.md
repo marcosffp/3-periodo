@@ -117,6 +117,10 @@
 
 O sistema operacional usa permissões de acesso (como no Unix: owner, group, others) com três tipos: leitura (r), escrita (w) e execução (x), controlando o que cada usuário pode fazer com arquivos compartilhados.
 
+* **r** = read (leitura): pode ver o conteúdo do diretório (listar arquivos).
+* **w** = write (escrita): pode criar, renomear ou deletar arquivos dentro do diretório.
+* **x** = execute (execução): pode **entrar no diretório** (acessar arquivos e subpastas dentro dele).
+
 ---
 
 ## ✅ CONCLUSÃO (Resumo Final)
