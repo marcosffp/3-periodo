@@ -90,4 +90,3 @@ Montar um data center **custa caro**. O PDF traz valores reais estimados:
 
 ---
 
-Se quiser, posso montar um **resumo visual estilo infográfico** com essas informações organizadas e ilustradas. Quer que eu faça isso?
