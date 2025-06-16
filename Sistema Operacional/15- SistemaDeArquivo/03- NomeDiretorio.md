@@ -10,6 +10,7 @@
 
 ---
 
+
 ## 🧱 ESTRUTURAS DE DIRETÓRIOS
 
 ### 1️⃣ **Diretório de Nível Único**
@@ -114,6 +115,12 @@
 * Três tipos: **read (r), write (w), execute (x)**.
 * Representação binária: `rwxr-x---` → `111101000`
 
+O sistema operacional usa permissões de acesso (como no Unix: owner, group, others) com três tipos: leitura (r), escrita (w) e execução (x), controlando o que cada usuário pode fazer com arquivos compartilhados.
+
+* **r** = read (leitura): pode ver o conteúdo do diretório (listar arquivos).
+* **w** = write (escrita): pode criar, renomear ou deletar arquivos dentro do diretório.
+* **x** = execute (execução): pode **entrar no diretório** (acessar arquivos e subpastas dentro dele).
+
 ---
 
 ## ✅ CONCLUSÃO (Resumo Final)
@@ -128,4 +135,62 @@
 | Proteção              | Controle de acesso via ACL (Windows) ou bits (UNIX) | Chave ou senha para cada pasta               |
 
 ---
+
+## 1. Estrutura de diretórios: normalmente é uma **árvore**
+
+* O sistema de arquivos tradicional organiza diretórios numa estrutura **em árvore**.
+* Isso significa que:
+
+  * Cada diretório tem **um único "pai"** (exceto a raiz `/`).
+  * Não existem ciclos (não dá pra voltar para o mesmo diretório passando por caminhos diferentes).
+  * Isso facilita operações como listar, copiar e deletar pastas recursivamente.
+
+---
+
+## 2. O que é um **grafo** no contexto de diretórios?
+
+* Um **grafo** é uma estrutura onde os nós (diretórios) podem ter **mais de um pai** e podem existir **ciclos** (loops).
+* Se a estrutura de diretórios for um grafo, isso quer dizer que:
+
+  * Um diretório pode ser acessado por caminhos diferentes (não só por um caminho único).
+  * Pode haver ciclos, ou seja, você pode voltar a um diretório passando por uma sequência de links/diretórios.
+
+---
+
+## 3. Consequências de uma estrutura de diretórios ser um grafo
+
+### a) Ciclos infinitos
+
+* Programas que fazem navegação recursiva (como `ls -R`, `cp -r`, `rm -r`, backups) podem entrar em **loop infinito** ao percorrer diretórios.
+* Por exemplo, ao tentar apagar uma pasta que tem links simbólicos circulares, o processo pode não terminar ou travar.
+
+### b) Complexidade para o sistema
+
+* O sistema de arquivos e as ferramentas precisam manter controle extra para evitar processar o mesmo diretório várias vezes.
+* Isso implica mais overhead para detectar ciclos.
+
+### c) Dificuldade para o usuário
+
+* Pode ser confuso saber onde um arquivo ou diretório realmente “está”, já que pode existir em vários caminhos diferentes.
+* Apagar ou modificar pode afetar outros lugares inesperados.
+
+---
+
+## 4. Como o Linux/Unix lida com isso?
+
+* **Hardlinks para diretórios são proibidos** para evitar ciclos.
+* **Softlinks podem criar ciclos**, por isso ferramentas que percorrem diretórios precisam detectar ciclos e evitar repetir caminhos.
+* Algumas ferramentas têm opções para seguir ou não seguir links simbólicos.
+
+---
+
+## 5. Resumo
+
+| Estrutura | Característica                                         | Problema Principal                     |
+| --------- | ------------------------------------------------------ | -------------------------------------- |
+| Árvore    | Sem ciclos, único caminho para cada diretório          | Fácil de navegar e gerenciar           |
+| Grafo     | Pode ter ciclos e múltiplos caminhos para um diretório | Pode causar loops infinitos e confusão |
+
+---
+
 

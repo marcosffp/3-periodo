@@ -28,7 +28,7 @@ Um **arquivo** é como uma **caixa** onde você guarda informações no computad
 
 ## 🧠 Resumo com frase correta:
 
-> "Nem todo arquivo é um diretório, mas todo diretório é um tipo especial de arquivo."
+> "Nem todo arquivo é um diretório, mas todo diretório é um tipo especial de arquivo, pois todo diretório herda operações básicas de arquivo (ex: permissões, dono), mas com comportamentos extras."
 
 ---
 
@@ -52,7 +52,7 @@ Um **arquivo** é como uma **caixa** onde você guarda informações no computad
 São como as **etiquetas** coladas na caixa:
 
 * Nome
-* Tipo
+* Tipo: define o formato e como os são organizados dentro do arquivo.
 * Tamanho
 * Localização no disco
 * Proteção (quem pode ler, escrever, etc.)
