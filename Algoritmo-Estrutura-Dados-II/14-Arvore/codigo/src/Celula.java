@@ -1,4 +1,4 @@
-package arvore;
+
 public class Celula<E> {
   private E item;
   private Celula<E> proximo;

@@ -1,5 +1,3 @@
-package arvore;
-
 import java.util.Comparator;
 
 public class AVL<K, V> extends ABB<K, V> {

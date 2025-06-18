@@ -1,4 +1,4 @@
-package arvore;
+
 
 public interface IMapeamento<K, V> {
 
