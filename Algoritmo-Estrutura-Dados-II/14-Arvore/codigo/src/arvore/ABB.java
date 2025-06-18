@@ -316,10 +316,20 @@ public class ABB<K, V> implements IMapeamento<K, V> {
   public ABB<K, V> clone() {
     ABB<K, V> copia = new ABB<>(this.comparador);
     if (this.raiz != null) {
-      copia.raiz = this.raiz.clone();
+      copia.raiz = clonar(this.raiz);
     }
     return copia;
   }
+
+  private No<K, V> clonar(No<K, V> no) {
+    if (no == null)
+      return null;
+
+    No<K, V> novoNo = no.clone(); 
+    novoNo.setEsquerda(clonar(no.getEsquerda()));
+    novoNo.setDireita(clonar(no.getDireita()));
+    return novoNo;
+  }  
 
   /*
    * Implemente a função public ABB<K, V> obterSubconjuntoMaiores(K

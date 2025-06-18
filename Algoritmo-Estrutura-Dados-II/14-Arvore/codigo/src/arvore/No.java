@@ -89,20 +89,10 @@ public class No<K,V> {
    * Utilize o método clone do nó para implementar a função clone da árvore
    * binária de busca.
    */
+  @Override
   public No<K, V> clone() {
-    return clone(this);
-  }
-
-  private No<K, V> clone(No<K, V> no) {
-    No<K, V> novoNo = new No<>(no.getChave(), no.getItem());
-    if (no.getEsquerda() != null) {
-      novoNo.setEsquerda(clone(no.getEsquerda()));
-    }
-    if (no.getDireita() != null) {
-      novoNo.setDireita(clone(no.getDireita()));
-    }
-    return novoNo;
-  }
+    return new No<>(this.getChave(), this.getItem());
+  }  
   
   
 

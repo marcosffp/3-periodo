@@ -96,6 +96,10 @@ public class Lista<E> {
     return this.tamanho;
   }
 
+
+
+
+
   /*
    * Implemente o método public void inserirFinal(E novo), que insere, o item
    * passado como parâmetro para esse método, no final da lista encadeada
