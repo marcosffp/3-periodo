@@ -181,26 +181,26 @@ public class ABB<K, V> implements IMapeamento<K, V> {
     if (vazia()) {
       throw new IllegalStateException("A árvore está vazia");
     }
-    return caminhamentoEmNivel(raiz);
+    Lista<No<K, V>> fila = new Lista<>();
+    fila.inserirFinal(raiz);
+    return caminhamentoEmNivel(fila);
   }
 
-  private String caminhamentoEmNivel(No<K, V> raizArvore) {
-    Lista<No<K, V>> lista = new Lista<>();
-    No<K, V> atual = null;
-    String caminho = "";
-    lista.inserir(raiz, lista.getTamanho());
-    while (!lista.vazia()) {
-      atual = lista.remover(0);
-      caminho += atual.getItem().toString() + " ";
-      if (atual.getEsquerda() != null) {
-        lista.inserir(atual.getEsquerda(), lista.getTamanho());
-      }
-      if (atual.getDireita() != null) {
-        lista.inserir(atual.getDireita(), lista.getTamanho());
-      }
-    }
-    return caminho;
+  private String caminhamentoEmNivel(Lista<No<K, V>> fila) {
+    if (fila.vazia())
+      return "";
 
+    No<K, V> atual = fila.remover(0);
+    String caminho = atual.getItem().toString() + " ";
+
+    if (atual.getEsquerda() != null) {
+      fila.inserirFinal(atual.getEsquerda());
+    }
+    if (atual.getDireita() != null) {
+      fila.inserirFinal(atual.getDireita());
+    }
+
+    return caminho + caminhamentoEmNivel(fila);
   }
 
   /*
