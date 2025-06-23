@@ -225,9 +225,19 @@ public class Lista<E> {
   public void inverter() {
     int n = tamanho - 1;
     for (int i = 0; i < n; i++) {
-      E item = remover(tamanho - 1); 
-      inserir(item, i); 
+      E item = remover(tamanho - 1);
+      inserir(item, i);
     }
+  }
+  
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    Celula<E> aux = primeiro.getProximo();
+    while (aux != null) {
+      sb.append(aux.getItem()).append(" ");
+      aux = aux.getProximo();
+    }
+    return sb.toString().trim();
   }
   
   public static void main(String[] args) {

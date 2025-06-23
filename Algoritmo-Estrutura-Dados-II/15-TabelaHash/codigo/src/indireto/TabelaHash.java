@@ -1,6 +1,5 @@
 package indireto;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 
 public class TabelaHash<K,V> implements IMapeamento<K, V> {

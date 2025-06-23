@@ -1,5 +1,4 @@
 
-
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
@@ -325,11 +324,11 @@ public class ABB<K, V> implements IMapeamento<K, V> {
     if (no == null)
       return null;
 
-    No<K, V> novoNo = no.clone(); 
+    No<K, V> novoNo = no.clone();
     novoNo.setEsquerda(clonar(no.getEsquerda()));
     novoNo.setDireita(clonar(no.getDireita()));
     return novoNo;
-  }  
+  }
 
   /*
    * Implemente a função public ABB<K, V> obterSubconjuntoMaiores(K
@@ -592,6 +591,69 @@ public class ABB<K, V> implements IMapeamento<K, V> {
     }
   }
 
+  /*
+   * Implemente, em Java, o método public boolean verificarEstrita(), capaz de
+   * verificar se a árvore é estrita. Uma árvore binária é considerada estrita se
+   * todos os seus nós possuírem exatamente 0 ou 2 filhos, ou seja, nenhum nó deve
+   * possuir apenas um filho. Esse método deve retornar true se a árvore for
+   * estrita e false, caso contrário.
+   */
+  public boolean verificarEstrita() {
+    if (raiz == null) {
+      return false;
+    }
+    return verificarEstrita(raiz);
+  }
+
+  private boolean verificarEstrita(No<K, V> no) {
+    if (no == null)
+      return true;
+    if (!verificarEstrita(no.getEsquerda()))
+      return false;
+    if (!verificarEstrita(no.getDireita()))
+      return false;
+    return (no.getEsquerda() == null && no.getDireita() == null)
+        || (no.getEsquerda() != null && no.getDireita() != null);
+  }
+
+  public Lista<V> recortar(K chaveInicio, K chaveFim) {
+    Lista<V> lista = new Lista<>();
+    recortar(raiz, chaveInicio, chaveFim, lista);
+    return lista;
+  }
+
+  /*
+   * Implemente o método public Lista<V> recortar(K chaveInicio, K chaveFim),
+   * que deve retornar uma lista contendo todos os valores armazenados na árvore
+   * binária de busca
+   * cujas chaves estão dentro do intervalo definido por chaveInicio e chaveFim,
+   * ou seja, todos os valores cujas chaves são maiores ou iguais a chaveInicio
+   * e menores ou iguais a chaveFim.
+   * Se a árvore binária de busca estiver vazia, uma lista vazia deve ser
+   * retornada.
+   * Se não for encontrado, na árvore binária de busca, nenhum elemento cuja chave
+   * corresponde àquela
+   * passada como parâmetro para esse método, uma exceção deve ser lançada.
+   */
+
+  private void recortar(No<K, V> noAtual, K chaveInicio, K chaveFim, Lista<V> filtro) {
+    if (noAtual == null) {
+      return;
+    } else {
+      int cmpInicio = comparador.compare(noAtual.getChave(), chaveInicio);
+      int cmpFim = comparador.compare(noAtual.getChave(), chaveFim);
+      if (cmpInicio < 0) { // Se a chave está ABAIXO do intervalo (menor que chaveInicio)
+        recortar(noAtual.getDireita(), chaveInicio, chaveFim, filtro); // Busca na direita (valores maiores)
+      } else if (cmpFim > 0) {// Se a chave está ACIMA do intervalo (maior que chaveFim)
+        recortar(noAtual.getEsquerda(), chaveInicio, chaveFim, filtro); // Busca na esquerda (valores menores)
+      } else { // cmpInicio >= 0 && cmpFim <= 0
+        recortar(noAtual.getEsquerda(), chaveInicio, chaveFim, filtro);
+        filtro.inserirFinal(noAtual.getItem());
+        recortar(noAtual.getDireita(), chaveInicio, chaveFim, filtro);
+      }
+    }
+  }
+
   public static void main(String[] args) {
     ABB<Integer, Integer> abb = new ABB<>((a, b) -> a.compareTo(b));
     abb.inserir(16, 16); // raiz
@@ -663,6 +725,13 @@ public class ABB<K, V> implements IMapeamento<K, V> {
 
     System.out.println("\n== NÚMEROS DE ELEMENTOS CUMPRIR A CONDIÇÃO");
     System.out.println("Números de elementos pares na árvore: " + abb.contarSe(v -> v % 2 == 0));
+
+    System.out.println("\n== VERIFICAR SE A ÁRVORE É ESTRITA ==");
+    System.out.println("A árvore é estrita? " + abb.verificarEstrita());
+
+    System.out.println("\n== RECORTAR ELEMENTOS ENTRE 5 E 19 ==");
+    Lista<Integer> recorte = abb.recortar(5, 19);
+    System.out.println("Elementos recortados entre 5 e 19: " + recorte.toString());
   }
 
 }
