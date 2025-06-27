@@ -93,5 +93,3 @@ Estudante de Engenharia de Software – PUC Minas
 * Conteúdos e projetos desenvolvidos com base nos temas abordados durante o 3º período
 
 > “Aprender na prática é transformar conhecimento em construção.”
-
-```
