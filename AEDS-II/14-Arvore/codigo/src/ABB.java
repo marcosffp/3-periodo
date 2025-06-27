@@ -317,6 +317,7 @@ public class ABB<K, V> implements IMapeamento<K, V> {
     if (this.raiz != null) {
       copia.raiz = clonar(this.raiz);
     }
+    copia.tamanho = this.tamanho;
     return copia;
   }
 
@@ -346,27 +347,30 @@ public class ABB<K, V> implements IMapeamento<K, V> {
     if (!contemChave(chave, raiz)) {
       throw new NoSuchElementException("Chave não encontrada na árvore: " + chave);
     }
-    ABB<K, V> abb = new ABB<>(comparador);
-    abb.raiz = obterSubconjuntoMaiores(chave, raiz);
-    return abb;
+
+    ABB<K, V> clonada = this.clone(); 
+    clonada.raiz = removerMenoresQue(chave, clonada.raiz); 
+    clonada.tamanho = contarNos(clonada.raiz); 
+    return clonada;
   }
 
-  private No<K, V> obterSubconjuntoMaiores(K chave, No<K, V> raizArvore) {
-    if (raizArvore == null) {
+  private No<K, V> removerMenoresQue(K chave, No<K, V> no) {
+    if (no == null)
       return null;
+    int comp = comparador.compare(chave, no.getChave());
+    if (comp > 0) {
+      return removerMenoresQue(chave, no.getDireita());
     } else {
-      int comparacao = comparador.compare(chave, raizArvore.getChave());
-      if (comparacao <= 0) {
-        No<K, V> novoNo = new No<>(raizArvore.getChave(), raizArvore.getItem());
-        if (raizArvore.getDireita() != null) {
-          novoNo.setDireita(raizArvore.getDireita().clone());
-        }
-        novoNo.setEsquerda(obterSubconjuntoMaiores(chave, raizArvore.getEsquerda()));
-        return novoNo;
-      } else {
-        return obterSubconjuntoMaiores(chave, raizArvore.getDireita());
-      }
+      no.setEsquerda(removerMenoresQue(chave, no.getEsquerda()));
+      no.setDireita(removerMenoresQue(chave, no.getDireita()));
+      return no;
     }
+  }
+
+  private int contarNos(No<K, V> no) {
+    if (no == null)
+      return 0;
+    return 1 + contarNos(no.getEsquerda()) + contarNos(no.getDireita());
   }
 
   private boolean contemChave(K chave, No<K, V> noAtual) {
@@ -399,23 +403,22 @@ public class ABB<K, V> implements IMapeamento<K, V> {
       throw new NoSuchElementException("Chave não encontrada na árvore: " + chave);
     }
     ABB<K, V> abb = new ABB<>(comparador);
-    abb.raiz = obterSubconjuntoMenores(chave, raiz);
+    obterSubconjuntoMenores(raiz, chave, abb);
     return abb;
   }
 
-  private No<K, V> obterSubconjuntoMenores(K chave, No<K, V> raizArvore) {
-    if (raizArvore == null) {
-      return null;
+  private void obterSubconjuntoMenores(No<K, V> raizArvore, K chave, ABB<K, V> abb) {
+    if (raizArvore == null)
+      return;
+
+    int comp = comparador.compare(raizArvore.getChave(), chave);
+
+    if (comp <= 0) {
+      abb.inserir(raizArvore.getChave(), raizArvore.getItem());
+      obterSubconjuntoMenores(raizArvore.getEsquerda(), chave, abb);
+      obterSubconjuntoMenores(raizArvore.getDireita(), chave, abb);
     } else {
-      int comparacao = comparador.compare(chave, raizArvore.getChave());
-      if (comparacao >= 0) {
-        No<K, V> novoNo = new No<>(raizArvore.getChave(), raizArvore.getItem());
-        novoNo.setEsquerda(obterSubconjuntoMenores(chave, raizArvore.getEsquerda()));
-        novoNo.setDireita(obterSubconjuntoMenores(chave, raizArvore.getDireita()));
-        return novoNo;
-      } else {
-        return obterSubconjuntoMenores(chave, raizArvore.getEsquerda());
-      }
+      obterSubconjuntoMenores(raizArvore.getEsquerda(), chave, abb);
     }
   }
 
@@ -599,28 +602,20 @@ public class ABB<K, V> implements IMapeamento<K, V> {
    * estrita e false, caso contrário.
    */
   public boolean verificarEstrita() {
-    if (raiz == null) {
-      return false;
-    }
     return verificarEstrita(raiz);
   }
 
-  private boolean verificarEstrita(No<K, V> no) {
-    if (no == null)
+  private boolean verificarEstrita(No<K, V> raizArvore) {
+    if (raizArvore == null)
       return true;
-    if (!verificarEstrita(no.getEsquerda()))
+    if (!verificarEstrita(raizArvore.getEsquerda()))
       return false;
-    if (!verificarEstrita(no.getDireita()))
+    if (!verificarEstrita(raizArvore.getDireita()))
       return false;
-    return (no.getEsquerda() == null && no.getDireita() == null)
-        || (no.getEsquerda() != null && no.getDireita() != null);
+    return (raizArvore.getEsquerda() == null && raizArvore.getDireita() == null)
+        || (raizArvore.getEsquerda() != null && raizArvore.getDireita() != null);
   }
 
-  public Lista<V> recortar(K chaveInicio, K chaveFim) {
-    Lista<V> lista = new Lista<>();
-    recortar(raiz, chaveInicio, chaveFim, lista);
-    return lista;
-  }
 
   /*
    * Implemente o método public Lista<V> recortar(K chaveInicio, K chaveFim),
@@ -636,6 +631,12 @@ public class ABB<K, V> implements IMapeamento<K, V> {
    * passada como parâmetro para esse método, uma exceção deve ser lançada.
    */
 
+  public Lista<V> recortar(K chaveInicio, K chaveFim) {
+    Lista<V> lista = new Lista<>();
+    recortar(raiz, chaveInicio, chaveFim, lista);
+    return lista;
+  }
+  
   private void recortar(No<K, V> noAtual, K chaveInicio, K chaveFim, Lista<V> filtro) {
     if (noAtual == null) {
       return;
