@@ -1,18 +1,18 @@
 # 🎓 3º Período - Engenharia de Software - PUC Minas
 
 Este repositório reúne os conteúdos desenvolvidos durante o **3º período** do curso de **Engenharia de Software** na **PUC Minas**.  
-Cada pasta representa uma disciplina, com projetos, exercícios e resumos produzidos de forma **didática e independente**, com **base nas aulas e nos temas abordados pelos professores**.
+Cada pasta representa uma disciplina, contendo projetos, exercícios, anotações e **materiais didáticos desenvolvidos por mim** com base nas aulas, nos temas abordados e nos **slides disponibilizados pelos professores**, que também estão incluídos neste repositório como apoio.
 
 ---
 
 ## 📁 Estrutura do Repositório
 
-| Pasta                         | Disciplina                           | Professores(as)                                               |
-|------------------------------|--------------------------------------|---------------------------------------------------------------|
-| `AEDS-II`                    | Algoritmos e Estruturas de Dados II  | Eveline Alonso Veloso                                         |
-| `EngenhariaRequisitos`       | Engenharia de Requisitos             | Juliana Amaral Baroni de Carvalho                             |
-| `IntroducaoPesquisaInformatica` | Introdução à Pesquisa em Informática | Lucila Ishitani                                                |
-| `Sistema Operacional`        | Sistemas Operacionais                | Pedro Henrique Ramos Costa                                    |
+| Pasta                         | Disciplina                           |
+|------------------------------|--------------------------------------|
+| `AEDS-II`                    | Algoritmos e Estruturas de Dados II  |
+| `EngenhariaRequisitos`       | Engenharia de Requisitos             |
+| `IntroducaoPesquisaInformatica` | Introdução à Pesquisa em Informática |
+| `Sistema Operacional`        | Sistemas Operacionais                |
 
 ---
 
@@ -20,35 +20,37 @@ Cada pasta representa uma disciplina, com projetos, exercícios e resumos produz
 
 ### #️⃣ AEDS-II 📚 – Algoritmos e Estruturas de Dados II com Java
 
-Implementações em Java de estruturas como listas, pilhas, filas, árvores e algoritmos de ordenação.  
-Baseado em conceitos ensinados pela professora **Eveline Alonso Veloso**.  
-**📝 Produzido de forma independente**, com base nas aulas e desafios propostos.
+Implementações em Java de listas, pilhas, filas, árvores, tabelas hash e algoritmos de ordenação.  
+**Material didático próprio**, com base nas aulas e **slides da professora Eveline Alonso Veloso**.
+
+---
 
 ### 🧾 Engenharia de Requisitos – Modelagem de Software
 
-Modelos de requisitos, especificações, casos de uso e práticas de levantamento de requisitos.  
-Baseado nos temas conduzidos pela professora **Juliana Amaral Baroni de Carvalho**.  
-**📝 Materiais produzidos por mim**, sem reutilização direta de slides ou arquivos da docente.
+Modelagem de requisitos, casos de uso, especificações e processos de levantamento.  
+**Conteúdo desenvolvido com base nos temas e slides da professora Juliana Amaral Baroni de Carvalho**.
+
+---
 
 ### 🔬 Introdução à Pesquisa em Informática – Escrita Científica
 
-Trabalhos e reflexões sobre metodologia científica, pesquisa em informática e produção acadêmica.  
-Inspirado nos tópicos da professora **Lucila Ishitani**.  
-**📝 Textos e conteúdos próprios**, com referências formatadas conforme a disciplina.
+Textos, atividades e reflexões sobre metodologia científica, escrita e pesquisa.  
+**Produzido com apoio dos slides da professora Lucila Ishitani**, com interpretações e exercícios próprios.
 
-### ⚙️ Sistemas Operacionais – Conceitos e Resumos
+---
 
-Resumos e exercícios sobre gerenciamento de processos, deadlocks, escalonamento e memória.  
-Acompanhando os temas ministrados pelo professor **Pedro Henrique Ramos Costa**.  
-**📝 Desenvolvido por mim**, com base nos conteúdos abordados em aula.
+### ⚙️ Sistemas Operacionais – Conceitos e Exercícios
+
+Resumos e implementações sobre processos, escalonamento, deadlocks, memória e sincronização.  
+**Elaborado com base nas aulas e slides do professor Pedro Henrique Ramos Costa**.
 
 ---
 
 ## 🧪 Tecnologias Utilizadas
 
-- **Java** – Linguagem principal utilizada nas implementações
-- **Markdown** – Para organização de resumos e anotações
-- **Git + GitHub** – Controle de versão e hospedagem dos projetos
+- **Java** – Para implementações de algoritmos e estruturas
+- **Markdown** – Para anotações e resumos
+- **Git + GitHub** – Para controle de versão e compartilhamento
 
 ---
 
@@ -59,11 +61,22 @@ Acompanhando os temas ministrados pelo professor **Pedro Henrique Ramos Costa**.
    git clone https://github.com/marcosffp/3-periodo.git
    ````
 
-2. Navegue até a pasta da disciplina:
+2. Acesse a pasta da disciplina desejada:
 
    ```bash
    cd 3-periodo/AEDS-II
    ```
+
+3. Compile e execute os códigos Java:
+
+   ```bash
+   javac Exemplo.java
+   java Exemplo
+   ```
+
+Ou abra o projeto diretamente na sua IDE preferida.
+
+---
 
 ## 👤 Autor
 
@@ -73,12 +86,12 @@ Estudante de Engenharia de Software – PUC Minas
 
 ---
 
-## 📚 Referências Gerais
+## 📚 Referências
 
-* Slides e aulas fornecidos em sala
-* Livros de apoio recomendados nas ementas
-* Experiência prática adquirida em sala, listas e projetos
+* Slides disponibilizados pelos professores em sala de aula
+* Livros e materiais recomendados nas ementas
+* Conteúdos e projetos desenvolvidos com base nos temas abordados durante o 3º período
 
 > “Aprender na prática é transformar conhecimento em construção.”
 
-
+```
