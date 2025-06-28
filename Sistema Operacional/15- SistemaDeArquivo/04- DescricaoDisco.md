@@ -109,10 +109,6 @@ O sistema precisa garantir:
 
 ## 📁 Tipos de alocação de arquivos
 
-Claro! Vamos por partes para explicar de forma bem didática os três principais **métodos de alocação de arquivos no disco**: **contígua, encadeada e indexada** (incluindo a indexada em múltiplos níveis). Esse conteúdo está no slide *"Sistemas de Arquivos (Parte 2)"* do Prof. Pedro Ramos.
-
----
-
 ## 🧱 **1. ALOCAÇÃO CONTÍGUA**
 
 ### ✅ Como funciona:
